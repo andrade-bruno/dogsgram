@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={type_second.variable}>
-        <div className={"App"}>
+        <div className="App">
           <Header />
           <main className="AppBody">{children}</main>
           <Footer />
