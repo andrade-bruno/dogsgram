@@ -1,4 +1,4 @@
-### Dogsgram
+# Dogsgram
 
 Here are final project provided by [Origamid's NextJS course](https://github.com/andrade-bruno/nextjs-crash-course.git)
 
