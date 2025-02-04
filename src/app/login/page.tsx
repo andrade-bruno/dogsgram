@@ -1,4 +1,10 @@
-import LoginForm from '@/components/login/login-form';
+import LoginForm from "@/components/login/login-form";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Dogs | Login",
+  description: "auth into your account or create a new",
+};
 
 export default async function LoginPage() {
   return (
