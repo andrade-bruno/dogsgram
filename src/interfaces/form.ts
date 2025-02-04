@@ -1,5 +1,7 @@
-export type IFormState = {
+export type IFormState<
+  T = Record<string, unknown> | Array<Record<string, unknown>>
+> = {
   ok: boolean;
-  data?: Record<string, string> | Array<Record<string, string>>;
+  data?: T;
   error?: string;
 };

@@ -1,9 +1,34 @@
 import Link from "next/link";
 import styles from "./header.module.css";
 import Image from "next/image";
+import userGet from "@/actions/user-get";
 
 export default async function Header() {
-  const user = false;
+  const { data: user } = await userGet();
+
+  const UserArea = () => {
+    if (!user)
+      return (
+        <Link className={styles.login} href={"/login"}>
+          Sign In | Sign Up
+        </Link>
+      );
+
+    return (
+      <div className="rectangle">
+        <p>{user.nome || user.email}</p>
+        <Link className={styles.logo} href="/account">
+          <Image
+            src="/assets/user.svg"
+            alt="Account"
+            width={22}
+            height={22}
+            priority
+          />
+        </Link>
+      </div>
+    );
+  };
 
   return (
     <header className={styles.header}>
@@ -17,9 +42,7 @@ export default async function Header() {
             priority
           />
         </Link>
-        <Link className={styles.login} href={user ? "/account" : "/login"}>
-          {user ? "Bruno" : "Sign In"}
-        </Link>
+        <UserArea />
       </nav>
     </header>
   );
