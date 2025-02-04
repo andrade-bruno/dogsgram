@@ -103,17 +103,14 @@ export default abstract class OrigamidApi {
     };
   }
 
-  static PASSWORD_LOST(body: Record<string, unknown>) {
-    return {
-      url: this.domain + "/api/password/lost",
-      options: {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
+  static async PASSWORD_LOST(body: Record<string, unknown>) {
+    return await fetch(this.domain + "/api/password/lost", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    };
+      body: JSON.stringify(body),
+    });
   }
 
   static PASSWORD_RESET(body: Record<string, unknown>) {

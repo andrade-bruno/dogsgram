@@ -9,7 +9,7 @@ import { defaults } from "@/utils/constants";
 export default async function createUser(
   state: IFormState,
   formData: FormData
-) {
+): Promise<IFormState> {
   const username = formData.get("username") as string | null;
   const email = formData.get("email") as string | null;
   const password = formData.get("password") as string | null;

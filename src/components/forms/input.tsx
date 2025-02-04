@@ -8,9 +8,11 @@ type InputProps = React.ComponentProps<"input"> & {
 export default function Input({ label, error, ...props }: InputProps) {
   return (
     <div className={styles.wrapper}>
-      <label className={styles.label} htmlFor={props.name}>
-        {label}
-      </label>
+      {props.type != "hidden" && (
+        <label className={styles.label} htmlFor={props.name}>
+          {label}
+        </label>
+      )}
       <input className={styles.input} type="text" id={props.name} {...props} />
       {error && <p className={styles.error}>{error}</p>}
     </div>
