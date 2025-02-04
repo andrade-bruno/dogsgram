@@ -1,3 +1,4 @@
+import CreateUserForm from "@/components/login/create-form";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,8 +8,9 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   return (
-    <main>
-      <h1>Create</h1>
-    </main>
+    <div className="animeLeft">
+      <h1 className="title">Create</h1>
+      <CreateUserForm />
+    </div>
   );
 }

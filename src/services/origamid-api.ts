@@ -34,17 +34,14 @@ export default abstract class OrigamidApi {
     };
   }
 
-  static USER_POST(body: Record<string, unknown>) {
-    return {
-      url: this.domain + "/api/user",
-      options: {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
+  static async USER_POST(body: Record<string, unknown>) {
+    return await fetch(this.domain + "/api/user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    };
+      body: JSON.stringify(body),
+    });
   }
 
   static PHOTO_POST(formData: FormData, token: string) {
