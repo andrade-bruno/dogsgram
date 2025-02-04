@@ -8,8 +8,9 @@ import ErrorMessage from "@/components/helper/error-message";
 import React from "react";
 import { IFormState } from "@/interfaces/form";
 import lostPassword from "@/actions/lost-password";
+import SuccessMessage from "@/components/helper/success-message";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"; // Window API cant be pre rendered in Node
 
 function FormButton() {
   const { pending } = useFormStatus();
@@ -33,7 +34,7 @@ export default function LostPasswordForm() {
         type="hidden"
         value={`${window.location.href.replace("lost-password", "reset")}`}
       />
-      {state.ok ? <p style={{ color: "#4C1" }}>Email sent!</p> : <FormButton />}
+      {state.ok ? <SuccessMessage>Email sent!</SuccessMessage> : <FormButton />}
       <ErrorMessage error={state.error} />
     </form>
   );

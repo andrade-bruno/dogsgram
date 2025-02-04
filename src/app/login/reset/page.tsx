@@ -1,3 +1,4 @@
+import ResetPasswordForm from "@/components/login/reset-password-form";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -5,10 +6,15 @@ export const metadata: Metadata = {
   description: "Reset your password",
 };
 
-export default async function Page() {
+type Props = {
+  searchParams: Record<string, unknown>;
+};
+
+export default async function Page({ searchParams }: Props) {
   return (
-    <main>
-      <h1>Reset Password</h1>
-    </main>
+    <div className="animeLeft">
+      <h1 className="title">Reset Password</h1>
+      <ResetPasswordForm searchParams={searchParams} />
+    </div>
   );
 }

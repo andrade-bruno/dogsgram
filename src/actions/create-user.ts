@@ -5,6 +5,7 @@ import apiError from "@/utils/api-error";
 import login from "./login";
 import { IFormState } from "@/interfaces/form";
 import { defaults } from "@/utils/constants";
+import translate from "translate";
 
 export default async function createUser(
   state: IFormState,
@@ -27,7 +28,11 @@ export default async function createUser(
     });
     const output = await response.json();
 
-    if (!response.ok) throw new Error(output.message || defaults.GENERIC_ERROR);
+    if (!response.ok)
+      throw new Error(
+        (await translate(output.message, { from: "pt", to: "en" })) ||
+          defaults.GENERIC_ERROR
+      );
 
     return await login({ ok: true }, formData);
   } catch (error: unknown) {

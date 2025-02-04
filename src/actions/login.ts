@@ -5,6 +5,7 @@ import { IFormState } from "@/interfaces/form";
 import { cookies } from "next/headers";
 import apiError from "@/utils/api-error";
 import { defaults } from "@/utils/constants";
+import translate from "translate";
 
 export default async function login(
   state: IFormState,
@@ -14,7 +15,11 @@ export default async function login(
     const response = await OrigamidApi.TOKEN_POST(formData);
     const output = await response.json();
 
-    if (!response.ok) throw new Error(output.message || defaults.GENERIC_ERROR);
+    if (!response.ok)
+      throw new Error(
+        (await translate(output.message, { from: "pt", to: "en" })) ||
+          defaults.GENERIC_ERROR
+      );
 
     cookies().set("token", output.token, {
       httpOnly: true,
