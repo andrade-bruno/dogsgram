@@ -1,7 +1,7 @@
 "use server";
 
 import OrigamidApi from "@/services/origamid-api";
-import apiError from "@/functions/api-error";
+import apiError from "@/utils/api-error";
 import login from "./login";
 import { IFormState } from "@/interfaces/form";
 

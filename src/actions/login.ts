@@ -3,7 +3,7 @@
 import OrigamidApi from "@/services/origamid-api";
 import { IFormState } from "@/interfaces/form";
 import { cookies } from "next/headers";
-import apiError from "@/functions/api-error";
+import apiError from "@/utils/api-error";
 
 export default async function login(
   state: IFormState,
