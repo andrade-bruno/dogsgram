@@ -4,6 +4,7 @@ import OrigamidApi from "@/services/origamid-api";
 import apiError from "@/utils/api-error";
 import login from "./login";
 import { IFormState } from "@/interfaces/form";
+import { defaults } from "@/utils/constants";
 
 export default async function createUser(
   state: IFormState,
@@ -19,15 +20,14 @@ export default async function createUser(
 
     if (password.length < 6) throw new Error("Password must have 6 digits.");
 
-    const bodyInit = {
+    const response = await OrigamidApi.USER_POST({
       username,
       email,
       password,
-    };
-    const response = await OrigamidApi.USER_POST(bodyInit);
+    });
     const output = await response.json();
 
-    if (!response.ok) throw new Error(output.message || "Something went wrong");
+    if (!response.ok) throw new Error(output.message || defaults.GENERIC_ERROR);
 
     return await login({ ok: true }, formData);
   } catch (error: unknown) {

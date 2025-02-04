@@ -4,6 +4,7 @@ import OrigamidApi from "@/services/origamid-api";
 import { IFormState } from "@/interfaces/form";
 import { cookies } from "next/headers";
 import apiError from "@/utils/api-error";
+import { defaults } from "@/utils/constants";
 
 export default async function login(
   state: IFormState,
@@ -11,12 +12,11 @@ export default async function login(
 ): Promise<IFormState> {
   try {
     const response = await OrigamidApi.TOKEN_POST(formData);
+    const output = await response.json();
 
-    if (!response.ok) throw new Error("Invalid username or password");
+    if (!response.ok) throw new Error(output.message || defaults.GENERIC_ERROR);
 
-    const data = await response.json();
-
-    cookies().set("token", data.token, {
+    cookies().set("token", output.token, {
       httpOnly: true,
       secure: true,
       sameSite: "lax",
@@ -25,7 +25,7 @@ export default async function login(
 
     return {
       ok: true,
-      data: data,
+      data: output,
     };
   } catch (error: unknown) {
     return apiError(error);
