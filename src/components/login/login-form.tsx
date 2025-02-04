@@ -7,10 +7,14 @@ import { IFormState } from "@/interfaces/form";
 import Input from "@/components/forms/input";
 import ErrorMessage from "@/components/helper/error-message";
 import React from "react";
+import Link from "next/link";
+import styles from "./login-form.module.css";
 
 function FormButton() {
   const { pending } = useFormStatus();
-  return <Button disabled={pending}>{!pending ? "Entrar" : "Aguarde"}</Button>;
+  return (
+    <Button disabled={pending}>{!pending ? "Login" : "Please wait..."}</Button>
+  );
 }
 
 export default function LoginForm() {
@@ -25,7 +29,7 @@ export default function LoginForm() {
 
   return (
     <>
-      <form action={action}>
+      <form action={action} className={styles.form}>
         <Input
           type="text"
           name="username"
@@ -37,6 +41,16 @@ export default function LoginForm() {
         <FormButton />
         <ErrorMessage error={state?.error} />
       </form>
+      <Link href="/login/lost-password" className={styles.lost}>
+        Forget password?
+      </Link>
+      <div className={styles.register}>
+        <h2 className={styles.subtitle}>Register</h2>
+        <p>Don't have account yet? Register now.</p>
+        <Link className="button" href="/login/create">
+          Let's do it!
+        </Link>
+      </div>
     </>
   );
 }

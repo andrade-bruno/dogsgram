@@ -1,11 +1,10 @@
-import React from 'react';
-import styles from './button.module.css';
+import React from "react";
 
 type ButtonType = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = ({ children, ...props }: ButtonType) => {
   return (
-    <button {...props} className={styles.button}>
+    <button {...props} className="button">
       {children}
     </button>
   );
