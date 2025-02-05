@@ -9,6 +9,7 @@ import styles from "./header.module.css";
 import useMedia from "@/hooks/use-media";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import logout from "@/actions/logout";
 
 function getTitle(pathname: string) {
   switch (pathname) {
@@ -30,8 +31,9 @@ export default function AccountHeader() {
     setMobileMenu(false);
   }, [pathname]);
 
-  function handleLogout() {
-    // userLogout();
+  async function handleLogout() {
+    await logout();
+    window.location.href = "/login"; // Hard refresh page, reset contexts
   }
 
   return (
