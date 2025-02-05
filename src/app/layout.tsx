@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { type_second } from "@/utils/fonts";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import Header from "@/components/header/header";
+import Footer from "@/components/footer/footer";
 import { UserContextProvider } from "@/context/user";
 import userGet from "@/actions/user-get";
 
