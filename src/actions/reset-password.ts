@@ -17,11 +17,14 @@ export default async function resetPassword(
   const confirmPassword = formData.get("confirmPassword") as string | null;
 
   try {
-    if (!login || !key || !password || !confirmPassword)
+    if (!password || !confirmPassword)
       throw new Error("Fill all the required fields");
 
     if (password !== confirmPassword)
       throw new Error("Passwords does not match.");
+
+    if (!login || !key)
+      throw new Error("Missing keys from reset email provided, sent to you :(");
 
     const response = await OrigamidApi.PASSWORD_RESET({
       login,

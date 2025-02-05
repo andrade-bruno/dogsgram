@@ -28,6 +28,7 @@ export default async function userGet(): Promise<IFormState<User>> {
     return { data: output as User, ok: true };
   } catch (error: unknown) {
     console.warn("Could not revalidate token");
+
     return {
       ok: false,
     };
