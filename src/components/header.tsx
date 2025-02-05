@@ -1,10 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import styles from "./header.module.css";
 import Image from "next/image";
-import userGet from "@/actions/user-get";
+import { useUserContext } from "@/context/user";
 
-export default async function Header() {
-  const { data: user } = await userGet();
+export default function Header() {
+  const { user } = useUserContext();
 
   const UserArea = () => {
     if (!user)
