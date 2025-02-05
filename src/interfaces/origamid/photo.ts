@@ -33,4 +33,4 @@ export type PostPhotoDataResponse = {
 
 export type PostPhotoResponse = IOrigamidError | PostPhotoDataResponse;
 
-export type GetPhotosResponse = IPhoto[] | IOrigamidError;
+export type GetPhotosResponse = IOrigamidError | IPhoto[];

@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./feed.module.css";
-import { Photo } from "@/interfaces/photo";
+import { IPhoto } from "@/interfaces/origamid/photo";
 
-export default function FeedPhotos({ photos }: { photos: Photo[] }) {
+export default function FeedPhotos({ photos }: { photos: IPhoto[] }) {
   return (
     <ul className={`${styles.feed} animeLeft`}>
       {photos.map((photo, i) => (

@@ -1,7 +1,7 @@
 "use server";
 
 import { IFormState } from "@/interfaces/form";
-import { GetPhotosResponse } from "@/interfaces/origamid/photo";
+import { GetPhotosResponse, IPhoto } from "@/interfaces/origamid/photo";
 import { handleActionError } from "@/utils/handle-action-error";
 import { grabAPIError } from "@/utils/grab-api-error";
 import OrigamidApi from "@/services/origamid-api";
@@ -11,7 +11,7 @@ export default async function getPhotos({
   page = 1,
   total = 6,
   user = 0,
-}: OrigamidFilterParams = {}): Promise<IFormState> {
+}: OrigamidFilterParams = {}): Promise<IFormState<IPhoto[]>> {
   try {
     const response = await OrigamidApi.PHOTOS_GET({ page, total, user });
     const output = (await response.json()) as GetPhotosResponse;
@@ -20,9 +20,9 @@ export default async function getPhotos({
 
     return {
       ok: true,
-      data: output,
+      data: output as IPhoto[],
     };
   } catch (error) {
-    return handleActionError(error);
+    return handleActionError<IPhoto[]>(error);
   }
 }
