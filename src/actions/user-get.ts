@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import OrigamidApi from "@/services/origamid-api";
 import { IFormState } from "@/interfaces/form";
-import { User } from "@/interfaces/user";
+import { User } from "@/interfaces/origamid/user";
 import { grabAPIError } from "@/utils/grab-api-error";
 
 export default async function userGet(): Promise<IFormState<User>> {

@@ -1,7 +1,7 @@
 "use server";
 
 import { IFormState } from "@/interfaces/form";
-import { PostPhotoResponse } from "@/interfaces/photo";
+import { PostPhotoResponse } from "@/interfaces/origamid/photo";
 import OrigamidApi from "@/services/origamid-api";
 import { handleActionError } from "@/utils/handle-action-error";
 import { defaults } from "@/utils/constants";

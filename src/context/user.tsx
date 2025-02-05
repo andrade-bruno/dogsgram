@@ -1,6 +1,6 @@
 "use client";
 
-import { User } from "@/interfaces/user";
+import { User } from "@/interfaces/origamid/user";
 import React from "react";
 
 type IUserContext = {

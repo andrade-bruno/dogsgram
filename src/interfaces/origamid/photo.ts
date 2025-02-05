@@ -1,4 +1,4 @@
-import { IOrigamidError } from "./origamid";
+import { IOrigamidError } from "./error";
 
 export type IPhoto = {
   id: number;

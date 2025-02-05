@@ -1,7 +1,7 @@
 "use server";
 
 import { IFormState } from "@/interfaces/form";
-import { GetPhotosResponse } from "@/interfaces/photo";
+import { GetPhotosResponse } from "@/interfaces/origamid/photo";
 import { handleActionError } from "@/utils/handle-action-error";
 import { grabAPIError } from "@/utils/grab-api-error";
 
