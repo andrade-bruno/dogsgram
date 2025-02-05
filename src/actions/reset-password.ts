@@ -1,11 +1,9 @@
 "use server";
 
-import apiError from "@/utils/api-error";
+import { handleActionError } from "@/utils/handle-action-error";
 import OrigamidApi from "@/services/origamid-api";
-import { defaults } from "@/utils/constants";
 import { IFormState } from "@/interfaces/form";
-import { redirect } from "next/navigation";
-import translate from "translate";
+import { grabAPIError } from "@/utils/grab-api-error";
 
 export default async function resetPassword(
   state: {},
@@ -34,14 +32,10 @@ export default async function resetPassword(
 
     const output = await response.json();
 
-    if (!response.ok)
-      throw new Error(
-        (await translate(output.message, { from: "pt", to: "en" })) ||
-          defaults.GENERIC_ERROR
-      );
+    grabAPIError(response, output);
 
     return { ok: true, data: output };
   } catch (error: unknown) {
-    return apiError(error);
+    return handleActionError(error);
   }
 }

@@ -1,15 +1,14 @@
 "use server";
 
 import { IFormState } from "@/interfaces/form";
-import { IOrigamidError } from "@/interfaces/origamid";
-import { PostPhotoOutput } from "@/interfaces/photo";
+import { PostPhotoResponse } from "@/interfaces/photo";
 import OrigamidApi from "@/services/origamid-api";
-import apiError from "@/utils/api-error";
+import { handleActionError } from "@/utils/handle-action-error";
 import { defaults } from "@/utils/constants";
+import { grabAPIError } from "@/utils/grab-api-error";
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import translate from "translate";
 
 export default async function photoPost(
   state: {},
@@ -30,20 +29,13 @@ export default async function photoPost(
 
     const response = await OrigamidApi.PHOTO_POST(formData, token);
 
-    const output = (await response.json()) as IOrigamidError | PostPhotoOutput;
+    const output = (await response.json()) as PostPhotoResponse;
 
-    if (!response.ok) {
-      const message =
-        "message" in output
-          ? await translate(output.message, { from: "pt", to: "en" })
-          : defaults.GENERIC_ERROR;
-
-      throw new Error(message);
-    }
+    grabAPIError(response, output);
 
     revalidateTag("photos");
   } catch (error: unknown) {
-    return apiError(error);
+    return handleActionError(error);
   } finally {
     redirect("/");
   }

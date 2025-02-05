@@ -1,3 +1,5 @@
+import { IOrigamidError } from "./origamid";
+
 export type IPhoto = {
   id: number;
   author: string;
@@ -10,7 +12,7 @@ export type IPhoto = {
   total_comments: string;
 };
 
-export type PostPhotoOutput = {
+export type PostPhotoDataResponse = {
   post_author: number;
   post_type: string;
   post_status: string;
@@ -28,3 +30,7 @@ export type PostPhotoOutput = {
     };
   };
 };
+
+export type PostPhotoResponse = IOrigamidError | PostPhotoDataResponse;
+
+export type GetPhotosResponse = IPhoto[] | IOrigamidError;
