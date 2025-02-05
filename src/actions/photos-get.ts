@@ -4,18 +4,16 @@ import { IFormState } from "@/interfaces/form";
 import { GetPhotosResponse } from "@/interfaces/origamid/photo";
 import { handleActionError } from "@/utils/handle-action-error";
 import { grabAPIError } from "@/utils/grab-api-error";
+import OrigamidApi from "@/services/origamid-api";
+import { OrigamidFilterParams } from "@/interfaces/origamid/filter-params";
 
-export default async function getPhotos(): Promise<IFormState> {
+export default async function getPhotos({
+  page = 1,
+  total = 6,
+  user = 0,
+}: OrigamidFilterParams = {}): Promise<IFormState> {
   try {
-    const response = await fetch(
-      "https://dogsapi.origamid.dev/json/api/photo/?_page=1&_total=6&_user=0",
-      {
-        next: {
-          revalidate: 30,
-          tags: ["photos"],
-        },
-      }
-    );
+    const response = await OrigamidApi.PHOTOS_GET({ page, total, user });
     const output = (await response.json()) as GetPhotosResponse;
 
     grabAPIError(response, output);

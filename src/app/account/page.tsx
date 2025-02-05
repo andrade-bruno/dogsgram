@@ -1,3 +1,5 @@
+import getPhotos from "@/actions/photos-get";
+import Feed from "@/components/feed/feed";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -5,5 +7,10 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  return <main></main>;
+  const {} = await getPhotos();
+  return (
+    <main>
+      <Feed />
+    </main>
+  );
 }

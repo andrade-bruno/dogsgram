@@ -1,4 +1,5 @@
 import { ID } from "@/interfaces/misc";
+import { OrigamidFilterParams } from "@/interfaces/origamid/filter-params";
 
 export default abstract class OrigamidApi {
   static domain = "https://dogsapi.origamid.dev/json";
@@ -51,12 +52,15 @@ export default abstract class OrigamidApi {
     });
   }
 
-  static async PHOTOS_GET({ page, total, user }: Record<string, unknown>) {
+  static async PHOTOS_GET({ page, total, user }: OrigamidFilterParams) {
     return await fetch(
       `${this.domain}/api/photo/?_page=${page}&_total=${total}&_user=${user}`,
       {
         method: "GET",
-        cache: "no-store",
+        next: {
+          revalidate: 30,
+          tags: ["photos"],
+        },
       }
     );
   }
