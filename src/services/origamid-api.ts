@@ -41,13 +41,13 @@ export default abstract class OrigamidApi {
     });
   }
 
-  static async PHOTO_POST(formData: FormData, token: string) {
+  static async PHOTO_POST(body: FormData, token: string) {
     return await fetch(this.domain + "/api/photo", {
       method: "POST",
       headers: {
         Authorization: "Bearer " + token,
       },
-      body: formData,
+      body,
     });
   }
 

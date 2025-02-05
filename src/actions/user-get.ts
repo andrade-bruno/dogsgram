@@ -8,8 +8,6 @@ import { IFormState } from "@/interfaces/form";
 import { User } from "@/interfaces/user";
 
 export default async function userGet(): Promise<IFormState<User>> {
-  console.warn("Revalidating token");
-
   try {
     const token = cookies().get("token")?.value;
     if (!token) throw new Error("Token not found.");
@@ -23,12 +21,8 @@ export default async function userGet(): Promise<IFormState<User>> {
           defaults.GENERIC_ERROR
       );
 
-    console.warn("Token revalidated");
-
     return { data: output as User, ok: true };
   } catch (error: unknown) {
-    console.warn("Could not revalidate token");
-
     return {
       ok: false,
     };
