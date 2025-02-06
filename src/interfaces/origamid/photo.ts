@@ -34,3 +34,17 @@ export type PostPhotoDataResponse = {
 export type PostPhotoResponse = IOrigamidError | PostPhotoDataResponse;
 
 export type GetPhotosResponse = IOrigamidError | IPhoto[];
+
+export type Comment = {
+  comment_ID: string;
+  comment_post_ID: string;
+  comment_author: string;
+  comment_content: string;
+};
+
+export type PhotoData = {
+  photo: IPhoto;
+  comments: Comment[];
+};
+
+export type GetPhotoResponse = IOrigamidError | PhotoData;

@@ -71,7 +71,10 @@ export default abstract class OrigamidApi {
   static async PHOTO_GET(id: ID) {
     return await fetch(`${this.domain}/api/photo/${id}`, {
       method: "GET",
-      cache: "no-store",
+      next: {
+        revalidate: 60,
+        tags: ["photos", "comment"],
+      },
     });
   }
 
