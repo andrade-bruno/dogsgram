@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "./header.module.css";
 import Image from "next/image";
 import { useUserContext } from "@/context/user";
+import { capitalizeName } from "@/utils/capitalize-name";
 
 export default function Header() {
   const { user } = useUserContext();
@@ -18,7 +19,7 @@ export default function Header() {
 
     return (
       <div className="rectangle">
-        <p>{user.nome || user.email}</p>
+        <p>{capitalizeName(user.nome) || user.email}</p>
         <Link className={styles.logo} href="/account">
           <Image
             src="/assets/user.svg"
