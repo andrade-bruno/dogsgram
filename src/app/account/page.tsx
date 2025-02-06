@@ -13,7 +13,7 @@ export default async function Page() {
 
   return (
     <section className="animeLeft">
-      <Feed photos={photos} />
+      <Feed photos={photos} username={user?.username} />
     </section>
   );
 }
