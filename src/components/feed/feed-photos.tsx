@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./feed.module.scss";
+import styles from "./feed-photos.module.scss";
 import { IPhoto } from "@/interfaces/origamid/photo";
 
 export default function FeedPhotos({ photos }: { photos: IPhoto[] }) {
