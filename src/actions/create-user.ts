@@ -27,7 +27,7 @@ export default async function createUser(
     });
     const output = await response.json();
 
-    grabAPIError(response, output);
+    await grabAPIError(response, output);
 
     return await login({ ok: true }, formData);
   } catch (error: unknown) {

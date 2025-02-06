@@ -14,7 +14,7 @@ export default async function userGet(): Promise<IFormState<User>> {
     const response = await OrigamidApi.USER_GET(token);
     const output = await response.json();
 
-    grabAPIError(response, output);
+    await grabAPIError(response, output);
 
     return { data: output as User, ok: true };
   } catch (error: unknown) {

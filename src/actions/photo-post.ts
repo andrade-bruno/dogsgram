@@ -31,7 +31,7 @@ export default async function photoPost(
 
     const output = (await response.json()) as PostPhotoResponse;
 
-    grabAPIError(response, output);
+    await grabAPIError(response, output);
 
     revalidateTag("photos");
   } catch (error: unknown) {

@@ -21,7 +21,7 @@ export default async function lostPassword(
 
     const output = await response.json();
 
-    grabAPIError(response, output);
+    await grabAPIError(response, output);
 
     return { ok: true, data: output };
   } catch (error: unknown) {

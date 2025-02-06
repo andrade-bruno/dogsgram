@@ -14,7 +14,7 @@ export default async function login(
     const response = await OrigamidApi.TOKEN_POST(formData);
     const output = await response.json();
 
-    grabAPIError(response, output);
+    await grabAPIError(response, output);
 
     cookies().set("token", output.token, {
       httpOnly: true,

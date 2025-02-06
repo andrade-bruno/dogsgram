@@ -52,7 +52,10 @@ export default abstract class OrigamidApi {
     });
   }
 
-  static async PHOTOS_GET({ page, total, user }: OrigamidFilterParams) {
+  static async PHOTOS_GET(
+    { page, total, user }: OrigamidFilterParams,
+    options?: RequestInit
+  ) {
     return await fetch(
       `${this.domain}/api/photo/?_page=${page}&_total=${total}&_user=${user}`,
       {

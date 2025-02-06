@@ -32,7 +32,7 @@ export default async function resetPassword(
 
     const output = await response.json();
 
-    grabAPIError(response, output);
+    await grabAPIError(response, output);
 
     return { ok: true, data: output };
   } catch (error: unknown) {
