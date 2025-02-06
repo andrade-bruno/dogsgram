@@ -1,0 +1,25 @@
+import Image from "next/image";
+import Link from "next/link";
+import styles from "./feed-photos.module.scss";
+import { IPhoto } from "@/interfaces/origamid/photo";
+
+export default function FeedPhotos({ photos }: { photos: IPhoto[] }) {
+  return (
+    <ul className={`${styles.feed} animeLeft`}>
+      {photos.map((photo, i) => (
+        <li className={styles.photo} key={photo.id + i}>
+          <Link href={`/photo/${photo.id}`} scroll={false}>
+            <Image
+              src={photo.src}
+              width={1500}
+              height={1500}
+              alt={photo.title}
+              sizes="80vw"
+            />
+            <span className={styles.visibility}>{photo.acessos}</span>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
