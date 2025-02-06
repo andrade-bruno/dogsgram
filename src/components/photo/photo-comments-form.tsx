@@ -36,7 +36,6 @@ export default function PhotoCommentsForm({
     ok: false,
   };
   const [state, action] = useFormState(commentPost, initialState);
-  console.log("🚀 ~ state:", state);
   const [comment, setComment] = React.useState("");
 
   React.useEffect(() => {
