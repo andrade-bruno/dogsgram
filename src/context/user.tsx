@@ -1,5 +1,7 @@
 "use client";
 
+import logout from "@/actions/logout";
+import validateToken from "@/actions/validate-token";
 import { User } from "@/interfaces/origamid/user";
 import React from "react";
 
@@ -26,6 +28,14 @@ export function UserContextProvider({
   user: IUserContext["user"];
 }) {
   const [userState, setUser] = React.useState<User | undefined>(user);
+
+  React.useEffect(() => {
+    async function validate() {
+      const { ok } = await validateToken();
+      if (!ok) await logout();
+    }
+    if (userState) validate();
+  }, [userState]);
 
   return (
     <UserContext.Provider value={{ user: userState, setUser }}>
