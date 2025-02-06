@@ -16,15 +16,15 @@ export default async function photoPost(
 ): Promise<IFormState> {
   const token = cookies().get("token")?.value;
 
-  const nome = formData.get("nome") as string | null;
-  const idade = formData.get("idade") as string | null;
-  const peso = formData.get("peso") as string | null;
+  const name = formData.get("nome") as string | null;
+  const age = formData.get("idade") as string | null;
+  const weight = formData.get("peso") as string | null;
   const img = formData.get("img") as File;
 
   try {
     if (!token) throw new Error(defaults.UNAUTHENTICATED);
 
-    if (!nome || !idade || !peso || img.size === 0)
+    if (!name || !age || !weight || img.size === 0)
       throw new Error("Fill all required fields.");
 
     const response = await OrigamidApi.PHOTO_POST(formData, token);
@@ -37,6 +37,6 @@ export default async function photoPost(
   } catch (error: unknown) {
     return handleActionError(error);
   } finally {
-    redirect("/");
+    redirect("/account");
   }
 }
