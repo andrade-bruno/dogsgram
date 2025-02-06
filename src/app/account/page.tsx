@@ -12,8 +12,8 @@ export default async function Page() {
   const { data: photos } = await getPhotos({ user: user?.username });
 
   return (
-    <main>
+    <section className="animeLeft">
       <Feed photos={photos} />
-    </main>
+    </section>
   );
 }
