@@ -42,9 +42,15 @@ const PhotoContent = ({
             <li>{photo.idade} year(s) old</li>
           </ul>
         </div>
+        <div>
+          <h1 className="title">Comments</h1>
+          <PhotoComments
+            single={single}
+            photoId={photo.id}
+            comments={comments}
+          />
+        </div>
       </div>
-      <h6 className="title">Comments</h6>
-      <PhotoComments single={single} photoId={photo.id} comments={comments} />
     </div>
   );
 };

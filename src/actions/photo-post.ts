@@ -37,7 +37,7 @@ export default async function photoPost(
     revalidateTag("stats");
   } catch (error: unknown) {
     return handleActionError(error);
-  } finally {
-    redirect("/account");
   }
+
+  redirect("/account");
 }

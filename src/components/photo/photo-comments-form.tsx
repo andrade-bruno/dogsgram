@@ -2,18 +2,23 @@
 
 import { useFormState, useFormStatus } from "react-dom";
 import styles from "./photo-comments-form.module.css";
-import ErrorMessage from "../helper/error-message";
+import ErrorMessage from "@/components/helper/error-message";
 import React from "react";
-import SendIcon from "@/icons/send";
+import BarkingDogIcon from "@/icons/barking-dog";
 import { IFormState } from "@/interfaces/form";
 import { Comment } from "@/interfaces/origamid/photo";
 import commentPost from "@/actions/comment-post";
+import Loading from "@/components/helper/loading";
 
 function FormButton() {
   const { pending } = useFormStatus();
   return (
     <button type="submit" className={styles.button} disabled={pending}>
-      <SendIcon />
+      {!pending ? (
+        <BarkingDogIcon height={40} width={40} />
+      ) : (
+        <Loading height={35} width={35} />
+      )}
     </button>
   );
 }

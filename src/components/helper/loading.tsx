@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "./loading.module.css";
 
-const Loading = ({ modal }: { modal?: boolean }) => {
+type Props = { modal?: boolean } & React.SVGProps<SVGSVGElement>;
+
+const Loading = ({ modal, ...svgProps }: Props) => {
   const [step, setStep] = React.useState(0);
 
   React.useEffect(() => {
@@ -32,6 +34,7 @@ const Loading = ({ modal }: { modal?: boolean }) => {
           viewBox="0 0 46 31"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          {...svgProps}
         >
           <g style={displayStep(0)}>
             <path

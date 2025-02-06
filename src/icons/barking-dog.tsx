@@ -1,4 +1,6 @@
-export default function SendIcon() {
+type Props = React.SVGProps<SVGSVGElement>;
+
+export default function SendIcon(props: Props) {
   return (
     <svg
       width="43"
@@ -6,6 +8,7 @@ export default function SendIcon() {
       viewBox="0 0 43 31"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <path
         fillRule="evenodd"

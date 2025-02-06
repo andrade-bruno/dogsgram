@@ -1,4 +1,6 @@
-export default function ExitIcon() {
+type Props = React.SVGProps<SVGSVGElement>;
+
+export default function ExitIcon(props: Props) {
   return (
     <svg
       width="28"
@@ -6,6 +8,7 @@ export default function ExitIcon() {
       viewBox="0 0 28 28"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <path
         fillRule="evenodd"

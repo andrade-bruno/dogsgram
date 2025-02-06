@@ -1,4 +1,6 @@
-export default function AddIcon() {
+type Props = React.SVGProps<SVGSVGElement>;
+
+export default function AddIcon(props: Props) {
   return (
     <svg
       width="28"
@@ -6,6 +8,7 @@ export default function AddIcon() {
       viewBox="0 0 28 28"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <path
         fillRule="evenodd"
