@@ -7,7 +7,7 @@ import { handleActionError } from "@/utils/handle-action-error";
 import { grabAPIError } from "@/utils/grab-api-error";
 
 export default async function login(
-  state: IFormState,
+  _state: IFormState,
   formData: FormData
 ): Promise<IFormState> {
   try {

@@ -11,7 +11,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export default async function photoPost(
-  state: {},
+  _state: IFormState,
   formData: FormData
 ): Promise<IFormState> {
   const token = cookies().get("token")?.value;

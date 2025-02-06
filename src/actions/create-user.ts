@@ -7,7 +7,7 @@ import { IFormState } from "@/interfaces/form";
 import { grabAPIError } from "@/utils/grab-api-error";
 
 export default async function createUser(
-  state: IFormState,
+  _state: IFormState,
   formData: FormData
 ): Promise<IFormState> {
   const username = formData.get("username") as string | null;

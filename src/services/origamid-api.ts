@@ -64,6 +64,7 @@ export default abstract class OrigamidApi {
           revalidate: 10,
           tags: ["photos"],
         },
+        ...options,
       }
     );
   }

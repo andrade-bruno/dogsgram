@@ -18,7 +18,7 @@ export default async function userGet(): Promise<IFormState<User>> {
     await grabAPIError(response, output);
 
     return { data: output as User, ok: true };
-  } catch (error: unknown) {
+  } catch {
     return {
       ok: false,
     };

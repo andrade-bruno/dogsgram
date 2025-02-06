@@ -6,7 +6,7 @@ import { IFormState } from "@/interfaces/form";
 import { grabAPIError } from "@/utils/grab-api-error";
 
 export default async function resetPassword(
-  state: {},
+  _state: IFormState,
   formData: FormData
 ): Promise<IFormState> {
   const login = formData.get("login") as string | null;

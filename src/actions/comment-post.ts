@@ -10,7 +10,7 @@ import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
 export default async function commentPost(
-  state: {},
+  _state: IFormState,
   formData: FormData
 ): Promise<IFormState<Comment>> {
   const token = cookies().get("token")?.value;
