@@ -24,16 +24,12 @@ export default function LostPasswordForm() {
     ok: false,
   };
   const [state, action] = useFormState(lostPassword, initialState);
+  const resetPath = window.location.origin + "/login/reset";
 
   return (
     <form action={action} className={styles.form}>
       <Input label="Email/User" name="login" type="text" />
-      <Input
-        label="Url"
-        name="url"
-        type="hidden"
-        value={`${window.location.href.replace("lost-password", "reset")}`}
-      />
+      <Input label="Url" name="url" type="hidden" value={resetPath} />
       {state.ok ? <SuccessMessage>Email sent!</SuccessMessage> : <FormButton />}
       <ErrorMessage error={state.error} />
     </form>
