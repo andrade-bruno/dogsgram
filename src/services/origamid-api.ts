@@ -78,22 +78,26 @@ export default abstract class OrigamidApi {
     });
   }
 
-  static async COMMENT_POST(id: ID, body: Record<string, unknown>) {
+  static async COMMENT_POST(
+    id: ID,
+    body: Record<string, unknown>,
+    token: string
+  ) {
     return await fetch(`${this.domain}/api/comment/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + window.localStorage.getItem("token"),
+        Authorization: "Bearer " + token,
       },
       body: JSON.stringify(body),
     });
   }
 
-  static async PHOTO_DELETE(id: ID) {
+  static async PHOTO_DELETE(id: ID, token: string) {
     return await fetch(`${this.domain}/api/photo/${id}`, {
       method: "DELETE",
       headers: {
-        Authorization: "Bearer " + window.localStorage.getItem("token"),
+        Authorization: "Bearer " + token,
       },
     });
   }
@@ -108,7 +112,7 @@ export default abstract class OrigamidApi {
     });
   }
 
-  static async PASSWORD_RESET(body: Record<string, unknown>) {
+  static async PASSWORD_RESET(body: Record<string, unknown>, token: string) {
     return await fetch(this.domain + "/api/password/reset", {
       method: "POST",
       headers: {
@@ -118,11 +122,11 @@ export default abstract class OrigamidApi {
     });
   }
 
-  static async STATS_GET() {
+  static async STATS_GET(token: string) {
     return await fetch(this.domain + "/api/stats", {
       method: "GET",
       headers: {
-        Authorization: "Bearer " + window.localStorage.getItem("token"),
+        Authorization: "Bearer " + token,
       },
     });
   }

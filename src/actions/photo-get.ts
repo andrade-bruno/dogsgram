@@ -12,7 +12,6 @@ export default async function photoGet(
   try {
     const response = await OrigamidApi.PHOTO_GET(id);
     const output = (await response.json()) as GetPhotoResponse;
-    console.log("🚀 ~ photoGet ~ output:", output);
 
     await grabAPIError(response, output);
 
