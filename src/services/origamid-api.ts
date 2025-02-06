@@ -112,7 +112,7 @@ export default abstract class OrigamidApi {
     });
   }
 
-  static async PASSWORD_RESET(body: Record<string, unknown>, token: string) {
+  static async PASSWORD_RESET(body: Record<string, unknown>) {
     return await fetch(this.domain + "/api/password/reset", {
       method: "POST",
       headers: {
