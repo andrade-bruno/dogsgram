@@ -58,7 +58,7 @@ export default function Feed({ photos, username }: FeedProps) {
       setLoading(false);
     }
     fetchMore(page);
-  }, [page]);
+  }, [page, username]);
 
   React.useEffect(() => {
     if (infinite) {
