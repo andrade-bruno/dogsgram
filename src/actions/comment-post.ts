@@ -3,6 +3,7 @@
 import { IFormState } from "@/interfaces/form";
 import { Comment } from "@/interfaces/origamid/photo";
 import OrigamidApi from "@/services/origamid-api";
+import { defaults } from "@/utils/constants";
 import { grabAPIError } from "@/utils/grab-api-error";
 import { handleActionError } from "@/utils/handle-action-error";
 import { revalidateTag } from "next/cache";
@@ -18,7 +19,7 @@ export default async function commentPost(
 
   try {
     if (!comment || !photoId) throw new Error("Fill all the fields");
-    if (!token) throw new Error("Missing token");
+    if (!token) throw new Error(defaults.UNAUTHENTICATED);
 
     const response = await OrigamidApi.COMMENT_POST(
       photoId,

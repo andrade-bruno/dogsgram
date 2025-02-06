@@ -1,27 +1,25 @@
 "use server";
 
 import { IFormState } from "@/interfaces/form";
+import { IStat } from "@/interfaces/origamid/stats";
 import OrigamidApi from "@/services/origamid-api";
 import { defaults } from "@/utils/constants";
 import { grabAPIError } from "@/utils/grab-api-error";
 import { handleActionError } from "@/utils/handle-action-error";
-import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
-export default async function photoDelete(id: string): Promise<IFormState> {
-  const token = cookies().get("token")?.value;
+export default async function statsGet(): Promise<IFormState<IStat[]>> {
   try {
+    const token = cookies().get("token")?.value;
     if (!token) throw new Error(defaults.UNAUTHENTICATED);
+    const response = await OrigamidApi.STATS_GET(token);
 
-    const response = await OrigamidApi.PHOTO_DELETE(id, token);
-    const output = await response.json();
+    const output = (await response.json()) as IStat[];
 
     await grabAPIError(response, output);
-  } catch (error: unknown) {
+
+    return { data: output, ok: true };
+  } catch (error) {
     return handleActionError(error);
   }
-
-  revalidateTag("photos");
-  redirect("/account");
 }

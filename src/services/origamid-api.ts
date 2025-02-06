@@ -128,6 +128,9 @@ export default abstract class OrigamidApi {
       headers: {
         Authorization: "Bearer " + token,
       },
+      next: {
+        revalidate: 60,
+      },
     });
   }
 }
