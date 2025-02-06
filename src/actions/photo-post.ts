@@ -34,6 +34,7 @@ export default async function photoPost(
     await grabAPIError(response, output);
 
     revalidateTag("photos");
+    revalidateTag("stats");
   } catch (error: unknown) {
     return handleActionError(error);
   } finally {

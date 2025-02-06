@@ -31,6 +31,8 @@ export default async function commentPost(
     await grabAPIError(response, output);
 
     revalidateTag("comment");
+    revalidateTag("photos");
+    revalidateTag("stats");
     return { data: output, ok: true };
   } catch (error: unknown) {
     return handleActionError<Comment>(error);

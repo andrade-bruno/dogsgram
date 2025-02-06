@@ -61,7 +61,7 @@ export default abstract class OrigamidApi {
       {
         method: "GET",
         next: {
-          revalidate: 30,
+          revalidate: 10,
           tags: ["photos"],
         },
       }
@@ -129,7 +129,8 @@ export default abstract class OrigamidApi {
         Authorization: "Bearer " + token,
       },
       next: {
-        revalidate: 60,
+        revalidate: 5,
+        tags: ["stats"],
       },
     });
   }

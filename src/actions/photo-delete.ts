@@ -23,5 +23,6 @@ export default async function photoDelete(id: string): Promise<IFormState> {
   }
 
   revalidateTag("photos");
+  revalidateTag("stats");
   redirect("/account");
 }
