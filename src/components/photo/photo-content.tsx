@@ -2,7 +2,7 @@
 
 import React from "react";
 import styles from "./photo-content.module.css";
-// import PhotoComments from './PhotoComments';
+import PhotoComments from "./photo-comments";
 import PhotoDelete from "./photo-delete";
 import Link from "next/link";
 import { useUserContext } from "@/context/user";
@@ -43,7 +43,8 @@ const PhotoContent = ({
           </ul>
         </div>
       </div>
-      {/* <PhotoComments single={single} id={photo.id} comments={comments} /> */}
+      <h6 className="title">Comments</h6>
+      <PhotoComments single={single} photoId={photo.id} comments={comments} />
     </div>
   );
 };
