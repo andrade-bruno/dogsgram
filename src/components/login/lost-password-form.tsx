@@ -10,8 +10,6 @@ import { IFormState } from "@/interfaces/form";
 import lostPassword from "@/actions/lost-password";
 import SuccessMessage from "@/components/helper/success-message";
 
-export const dynamic = "force-dynamic"; // Window API cant be pre rendered in Node
-
 function FormButton() {
   const { pending } = useFormStatus();
   return (
@@ -24,7 +22,12 @@ export default function LostPasswordForm() {
     ok: false,
   };
   const [state, action] = useFormState(lostPassword, initialState);
-  const resetPath = window.location.origin + "/login/reset";
+  const [resetPath, setResetPath] = React.useState("");
+
+  React.useEffect(
+    () => setResetPath(window.location.origin + "/login/reset"),
+    []
+  );
 
   return (
     <form action={action} className={styles.form}>
