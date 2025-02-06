@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useUserContext } from "@/context/user";
 import Image from "next/image";
 import { PhotoData } from "@/interfaces/origamid/photo";
+import { capitalizeName } from "@/utils/capitalize-name";
 
 const PhotoContent = ({
   data,
@@ -30,12 +31,16 @@ const PhotoContent = ({
             {user && user.username === photo.author ? (
               <PhotoDelete id={String(photo.id)} />
             ) : (
-              <Link href={`/profile/${photo.author}`}>@{photo.author}</Link>
+              <Link href={`/profile/${photo.author}`}>
+                @{capitalizeName(photo.author)}
+              </Link>
             )}
             <span className={styles.visibility}>{photo.acessos}</span>
           </p>
           <h1 className="title">
-            <Link href={`/photo/${photo.id}`}>{photo.title}</Link>
+            <Link href={`/photo/${photo.id}`}>
+              {capitalizeName(photo.title)}
+            </Link>
           </h1>
           <ul className={styles.attributes}>
             <li>{photo.peso} kg</li>

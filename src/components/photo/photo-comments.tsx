@@ -5,6 +5,7 @@ import PhotoCommentsForm from "./photo-comments-form";
 import styles from "./photo-comments.module.css";
 import { useUserContext } from "@/context/user";
 import { Comment } from "@/interfaces/origamid/photo";
+import { capitalizeName } from "@/utils/capitalize-name";
 
 const PhotoComments = (props: {
   single: boolean;
@@ -29,7 +30,7 @@ const PhotoComments = (props: {
       >
         {comments.map((comment) => (
           <li key={comment.comment_ID}>
-            <b>{comment.comment_author}: </b>
+            <b>{capitalizeName(comment.comment_author)}: </b>
             <span>{comment.comment_content}</span>
           </li>
         ))}
