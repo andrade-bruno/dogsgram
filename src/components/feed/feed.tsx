@@ -7,6 +7,7 @@ import Link from "next/link";
 import React from "react";
 import getPhotos from "@/actions/photos-get";
 import { User } from "@/interfaces/origamid/user";
+import Loading from "@/components/helper/loading";
 
 type FeedProps = { photos?: IPhoto[]; username?: User["username"] };
 
@@ -30,7 +31,6 @@ export default function Feed({ photos, username }: FeedProps) {
     setTimeout(() => {
       setPage((current) => (current += 1));
       fetching.current = false;
-      setLoading(false);
     }, 1500);
   };
 
@@ -55,6 +55,7 @@ export default function Feed({ photos, username }: FeedProps) {
         setPhotosFeed((old) => [...(old as IPhoto[]), ...newPhotos]);
         if (newPhotos.length < 6) setInfinite(false);
       }
+      setLoading(false);
     }
     fetchMore(page);
   }, [page]);
@@ -87,7 +88,9 @@ export default function Feed({ photos, username }: FeedProps) {
   return (
     <div>
       <FeedPhotos photos={photosFeed} />
-      {loading && `Loading ${username ?? ""} photos...`}
+      <div className={styles.loadingWrapper}>
+        {infinite ? loading && <Loading /> : <p>No more photos to load</p>}
+      </div>
     </div>
   );
 }

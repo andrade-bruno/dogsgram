@@ -8,7 +8,7 @@ import OrigamidApi from "@/services/origamid-api";
 import { OrigamidFilterParams } from "@/interfaces/origamid/filter-params";
 
 export default async function getPhotos(
-  { page = 1, total = 6, user = 0 }: OrigamidFilterParams,
+  { page = 1, total = 6, user = 0 }: OrigamidFilterParams = {},
   options?: RequestInit
 ): Promise<IFormState<IPhoto[]>> {
   try {
