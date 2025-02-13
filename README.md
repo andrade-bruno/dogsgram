@@ -7,4 +7,4 @@ A React converted to Next system, we just simply clone it and make a few changes
 
 [Production Deploy](https://dogsgram-bruno-andrade.vercel.app/)
 
-[Certificate](https://www.origamid.com/certificate/9d8de6a4)
+[Certificade](https://www.origamid.com/certificate/9d8de6a4)
