@@ -1,9 +1,12 @@
 # Dogsgram
 
-Here are final project provided by [Origamid's NextJS course](https://github.com/andrade-bruno/nextjs-crash-course.git)
+A social media for pets.
 
-A React converted to Next system, we just simply clone it and make a few changes to adapt NextJS scalabilities.
+In a React converted to Next project, I've just made  a few changes to adapt NextJS scalabilities.
 
+## Deployment
+
+Here are my final project provided by [Origamid's NextJS course](https://github.com/andrade-bruno/nextjs-crash-course.git)
 
 [Production Deploy](https://dogsgram-bruno-andrade.vercel.app/)
 
